@@ -3,46 +3,70 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Spectral Gate — Download (v0.0.1)</title>
+  <title>Spectral Gate - Download (v0.0.1)</title>
+
+  <!-- Importa Inter da Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+
   <style>
-    :root { --bg:#f7f7f8; --fg:#1f2328; --muted:#6b7280; --brand:#0ea5e9; }
+    :root { --bg:#f7f7f8; --fg:#1f2328; --muted:#6b7280; --brand:#0ea5e9; --border:#e5e7eb; }
     * { box-sizing: border-box; }
-    body { margin:0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; color:var(--fg); background:var(--bg); }
-    header { padding:32px 16px; text-align:center; background:var(--bg); }
-    h1 { margin:0 0 8px; font-size:28px; letter-spacing:.2px; }
+    body { 
+      margin:0; 
+      font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; 
+      color:var(--fg); 
+      background:var(--bg); 
+    }
+    header { padding:28px 16px 12px; text-align:center; background:var(--bg); }
+    h1 { margin:0 0 6px; font-size:28px; letter-spacing:.2px; }
     .version { color:var(--muted); font-size:14px; }
+    .lang-switch { margin:14px auto 0; display:flex; justify-content:center; }
+    .segmented {
+      display:inline-flex; border:1px solid var(--border); border-radius:12px; overflow:hidden; background:#fff;
+      box-shadow: 0 1px 4px rgba(0,0,0,.04);
+    }
+    .segmented button {
+      appearance:none; border:0; padding:8px 14px; background:#fff; cursor:pointer; font-weight:600;
+      min-width:92px; 
+    }
+    .segmented button + button { border-left:1px solid var(--border); }
+    .segmented button[aria-pressed="true"] {
+      background:var(--brand); color:#fff; cursor:default;
+    }
+    .segmented button:disabled { opacity:1; }
     main { max-width:720px; margin:24px auto; padding:0 16px 48px; }
-    .card { background:#fff; border:1px solid #e5e7eb; border-radius:16px; padding:20px; box-shadow: 0 2px 8px rgba(0,0,0,.04); }
+    .card { background:#fff; border:1px solid var(--border); border-radius:16px; padding:20px; box-shadow: 0 2px 8px rgba(0,0,0,.04); }
     .grid { display:grid; gap:12px; grid-template-columns: 1fr; }
     @media (min-width:640px){ .grid { grid-template-columns: 1fr 1fr; } }
-    a.button { display:block; text-align:center; padding:12px 16px; border-radius:10px; text-decoration:none; border:1px solid #e5e7eb; }
+    a.button { display:block; text-align:center; padding:12px 16px; border-radius:10px; text-decoration:none; border:1px solid var(--border); }
     a.button.primary { background:var(--brand); color:#fff; border-color:transparent; }
     a.button:hover { filter: brightness(.97); }
     .note { color:var(--muted); font-size:14px; margin-top:12px; }
     .section { margin-top:24px; }
     code { background:#f3f4f6; padding:2px 6px; border-radius:6px; font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
     footer { text-align:center; color:var(--muted); font-size:13px; padding:24px 12px; }
-    h2 { margin-top: 32px; font-size:20px; }
     .lang { display:none; }
     .lang.active { display:block; }
-    .lang-switch { margin-top:16px; text-align:center; }
-    .lang-switch button { background:var(--brand); color:#fff; border:none; padding:8px 16px; border-radius:8px; cursor:pointer; }
-    .lang-switch button:hover { filter:brightness(.95); }
   </style>
 </head>
 <body>
   <header>
     <h1>Spectral Gate</h1>
     <div class="version">Beta v0.0.1</div>
-    <div class="lang-switch">
-      <button onclick="switchLang()">🌐 Switch Language</button>
+
+    <!-- Language segmented control -->
+    <div class="lang-switch" role="tablist" aria-label="Language selector">
+      <div class="segmented">
+        <button id="btn-it" type="button" role="tab" aria-selected="true" aria-pressed="true" data-lang="it" disabled>ITA</button>
+        <button id="btn-en" type="button" role="tab" aria-selected="false" aria-pressed="false" data-lang="en">ENG</button>
+      </div>
     </div>
   </header>
 
   <main>
     <div class="card">
       <!-- Italiano -->
-      <div id="lang-it" class="lang active">
+      <div id="lang-it" class="lang active" lang="it">
         <p>Seleziona il tuo sistema operativo per scaricare il plugin.<br>
            Ogni archivio include il plugin e il documento guida.</p>
 
@@ -69,13 +93,13 @@
 
         <div class="section note">
           Suggerimento macOS: se il sistema blocca il plugin, apri con click destro → <em>Apri</em>.<br>
-          In alternativa:<br>
+          <strong>In alternativa:</strong><br>
           <code>xattr -dr com.apple.quarantine "/Library/Audio/Plug-Ins/VST3/SpectralGate.vst3"</code>
         </div>
       </div>
 
       <!-- English -->
-      <div id="lang-en" class="lang">
+      <div id="lang-en" class="lang" lang="en">
         <p>Select your operating system to download the plugin.<br>
            Each archive includes the plugin and the testing guide.</p>
 
@@ -102,27 +126,52 @@
 
         <div class="section note">
           macOS tip: if the system blocks the plugin, right-click → <em>Open</em>.<br>
-          Alternatively:<br>
+          <strong>Alternatively:</strong><br>
           <code>xattr -dr com.apple.quarantine "/Library/Audio/Plug-Ins/VST3/SpectralGate.vst3"</code>
         </div>
       </div>
     </div>
   </main>
 
-  <footer>© 2025 Spectral Gate — Testing</footer>
+  <footer>© 2025 Valerio Galante</footer>
 
   <script>
-    function switchLang() {
-      const it = document.getElementById("lang-it");
-      const en = document.getElementById("lang-en");
-      if (it.classList.contains("active")) {
-        it.classList.remove("active");
-        en.classList.add("active");
-      } else {
-        en.classList.remove("active");
-        it.classList.add("active");
+    (function() {
+      const itBtn = document.getElementById('btn-it');
+      const enBtn = document.getElementById('btn-en');
+      const itBlock = document.getElementById('lang-it');
+      const enBlock = document.getElementById('lang-en');
+
+      function setLang(lang) {
+        const isIT = lang === 'it';
+        // toggle content
+        itBlock.classList.toggle('active', isIT);
+        enBlock.classList.toggle('active', !isIT);
+        // toggle buttons state + a11y
+        itBtn.disabled = isIT;
+        enBtn.disabled = !isIT;
+        itBtn.setAttribute('aria-pressed', String(isIT));
+        enBtn.setAttribute('aria-pressed', String(!isIT));
+        itBtn.setAttribute('aria-selected', String(isIT));
+        enBtn.setAttribute('aria-selected', String(!isIT));
+        // html lang
+        document.documentElement.setAttribute('lang', isIT ? 'it' : 'en');
+        // persist
+        try { localStorage.setItem('sg_lang', lang); } catch(e) {}
       }
-    }
+
+      // click handlers
+      itBtn.addEventListener('click', () => setLang('it'));
+      enBtn.addEventListener('click', () => setLang('en'));
+
+      // initial language: URL ?lang=it|en > localStorage > browser locale
+      const params = new URLSearchParams(location.search);
+      const urlLang = params.get('lang');
+      const saved = (() => { try { return localStorage.getItem('sg_lang'); } catch(e) { return null; }})();
+      const browserIsIT = navigator.language?.toLowerCase().startsWith('it');
+      const initial = (urlLang === 'it' || urlLang === 'en') ? urlLang : (saved || (browserIsIT ? 'it' : 'en'));
+      setLang(initial);
+    })();
   </script>
 </body>
 </html>
