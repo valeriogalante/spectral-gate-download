@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="it">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -8,7 +8,7 @@
     :root { --bg:#f7f7f8; --fg:#1f2328; --muted:#6b7280; --brand:#0ea5e9; }
     * { box-sizing: border-box; }
     body { margin:0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; color:var(--fg); background:var(--bg); }
-    header { padding:32px 16px; text-align:center; background:linear-gradient(180deg,#e0f2fe,transparent); }
+    header { padding:32px 16px; text-align:center; background:var(--bg); }
     h1 { margin:0 0 8px; font-size:28px; letter-spacing:.2px; }
     .version { color:var(--muted); font-size:14px; }
     main { max-width:720px; margin:24px auto; padding:0 16px 48px; }
@@ -22,6 +22,7 @@
     .section { margin-top:24px; }
     code { background:#f3f4f6; padding:2px 6px; border-radius:6px; font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
     footer { text-align:center; color:var(--muted); font-size:13px; padding:24px 12px; }
+    h2 { margin-top: 32px; font-size:20px; }
   </style>
 </head>
 <body>
@@ -32,27 +33,44 @@
 
   <main>
     <div class="card">
-      <p>Seleziona il tuo sistema operativo per scaricare il plugin.
-         Ogni archivio include il plugin e il documento guida.</p>
+      <p>Seleziona il tuo sistema operativo per scaricare il plugin.<br>
+         Ogni archivio include il plugin e il documento guida.<br><br>
+         Select your operating system to download the plugin.<br>
+         Each archive includes the plugin and the testing guide.</p>
 
       <div class="grid section">
-        <a class="button primary" href="downloads/SpectralGate_v0.0.1_Windows.zip">⬇ Download — Windows (ZIP)</a>
-        <a class="button primary" href="downloads/SpectralGate_v0.0.1_macOS.zip">⬇ Download — macOS (ZIP)</a>
+        <a class="button primary" href="downloads/SpectralGate_v0.0.1_Windows.zip">⬇ Windows (ZIP)</a>
+        <a class="button primary" href="downloads/SpectralGate_v0.0.1_macOS.zip">⬇ macOS (ZIP)</a>
       </div>
 
       <div class="section">
-        <strong>Note rapide</strong>
+        <strong>Note rapide / Quick notes</strong>
         <ul>
-          <li>Formati inclusi: VST3 (Win/mac), Audio Unit (macOS).</li>
-          <li>Percorsi: <code>C:\Program Files\Common Files\VST3</code> (Win),
-              <code>/Library/Audio/Plug-Ins/VST3</code> e
-              <code>/Library/Audio/Plug-Ins/Components</code> (macOS).</li>
-          <li>Feedback / bug: scrivi a <a href="mailto:REPLACE_ME@example.com">REPLACE_ME@example.com</a>.</li>
+          <li>Formati inclusi: VST3 (Win/mac), Audio Unit (macOS).<br>
+              Included formats: VST3 (Win/mac), Audio Unit (macOS).</li>
+          <li>Feedback / bug: <a href="mailto:valeriogalante2002@gmail.com">valeriogalante2002@gmail.com</a></li>
+          <li>
+            <strong>Installazione / Installation:</strong><br><br>
+            <em>Windows:</em><br>
+            Copiare <code>SpectralGate.vst3</code> in <code>C:\Program Files\Common Files\VST3</code><br>
+            Copy <code>SpectralGate.vst3</code> to <code>C:\Program Files\Common Files\VST3</code><br><br>
+
+            <em>macOS:</em><br>
+            Copiare <code>SpectralGate.vst3</code> in <code>/Library/Audio/Plug-Ins/VST3</code><br>
+            Copiare <code>SpectralGate.component</code> in <code>/Library/Audio/Plug-Ins/Components</code><br>
+            Copy <code>SpectralGate.vst3</code> to <code>/Library/Audio/Plug-Ins/VST3</code><br>
+            Copy <code>SpectralGate.component</code> to <code>/Library/Audio/Plug-Ins/Components</code>
+          </li>
         </ul>
       </div>
 
       <div class="section note">
-        Suggerimento macOS: se il sistema blocca il plugin, apri con click destro → <em>Apri</em>. In alternativa:
+        Suggerimento macOS: se il sistema blocca il plugin, apri con click destro → <em>Apri</em>.<br>
+        In alternativa:<br>
+        <code>xattr -dr com.apple.quarantine "/Library/Audio/Plug-Ins/VST3/SpectralGate.vst3"</code><br><br>
+
+        macOS tip: if the system blocks the plugin, right-click → <em>Open</em>.<br>
+        Alternatively:<br>
         <code>xattr -dr com.apple.quarantine "/Library/Audio/Plug-Ins/VST3/SpectralGate.vst3"</code>
       </div>
     </div>
