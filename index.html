@@ -34,7 +34,7 @@
       background:var(--brand); color:#fff; cursor:default;
     }
     .segmented button:disabled { opacity:1; }
-    main { max-width:720px; margin:24px auto; padding:0 16px 48px; }
+    main { max-width:800px; margin:24px auto; padding:0 16px 48px; }
     .card { background:#fff; border:1px solid var(--border); border-radius:16px; padding:20px; box-shadow: 0 2px 8px rgba(0,0,0,.04); }
     .grid { display:grid; gap:12px; grid-template-columns: 1fr; }
     @media (min-width:640px){ .grid { grid-template-columns: 1fr 1fr; } }
@@ -47,6 +47,22 @@
     footer { text-align:center; color:var(--muted); font-size:13px; padding:24px 12px; }
     .lang { display:none; }
     .lang.active { display:block; }
+
+    /* warning box */
+    .note-warning {
+      background: #fff8e1;
+      border: 1px solid #facc15;
+      padding: 14px;
+      border-radius: 10px;
+      font-size: 14px;
+      color: #78350f;
+      margin-top: 16px;
+      line-height: 1.5;
+    }
+    .note-warning code {
+      display: block;
+      margin-top: 6px;
+    }
   </style>
 </head>
 <body>
@@ -78,23 +94,25 @@
         <div class="section">
           <strong>Note rapide</strong>
           <ul>
-            <li>Formati inclusi: VST3 (Win/mac), Audio Unit (macOS).</li>
+            <li>Formati inclusi: VST3 (WIN/MAC), Audio Unit (MAC).</li>
             <li>Feedback / bug: <a href="mailto:valeriogalante2002@gmail.com">valeriogalante2002@gmail.com</a></li>
             <li>
               <strong>Installazione:</strong><br><br>
               <em>Windows:</em><br>
-              Copiare <code>SpectralGate.vst3</code> in <code>C:\Program Files\Common Files\VST3</code><br><br>
+              Copiare <code>Spectral Gate.vst3</code> in <code>C:\Program Files\Common Files\VST3</code><br><br>
               <em>macOS:</em><br>
-              Copiare <code>SpectralGate.vst3</code> in <code>/Library/Audio/Plug-Ins/VST3</code><br>
-              Copiare <code>SpectralGate.component</code> in <code>/Library/Audio/Plug-Ins/Components</code>
+              Copiare <code>Spectral Gate.vst3</code> in <code>/Library/Audio/Plug-Ins/VST3</code><br>
+              Copiare <code>Spectral Gate.component</code> in <code>/Library/Audio/Plug-Ins/Components</code>
             </li>
           </ul>
         </div>
 
-        <div class="section note">
-          Suggerimento macOS: se il sistema blocca il plugin, apri con click destro → <em>Apri</em>.<br>
-          <strong>In alternativa:</strong><br>
-          <code>xattr -dr com.apple.quarantine "/Library/Audio/Plug-Ins/VST3/SpectralGate.vst3"</code>
+        <div class="section note-warning">
+          <strong>Nota Gatekeeper (macOS):</strong> il plugin non è firmato come sviluppatore certificato Apple.<br>
+          Per permetterne il caricamento la prima volta, apri il Terminale e inserisci i seguenti comandi
+          (potrebbe essere richiesta la password di amministratore):<br>
+          <code>sudo xattr -rd com.apple.quarantine "/Library/Audio/Plug-Ins/VST3/Spectral Gate.vst3"</code>
+          <code>sudo xattr -rd com.apple.quarantine "/Library/Audio/Plug-Ins/Components/Spectral Gate.component"</code>
         </div>
       </div>
 
@@ -111,23 +129,25 @@
         <div class="section">
           <strong>Quick notes</strong>
           <ul>
-            <li>Included formats: VST3 (Win/mac), Audio Unit (macOS).</li>
+            <li>Included formats: VST3 (WIN/MAC), Audio Unit (MAC).</li>
             <li>Feedback / bugs: <a href="mailto:valeriogalante2002@gmail.com">valeriogalante2002@gmail.com</a></li>
             <li>
               <strong>Installation:</strong><br><br>
               <em>Windows:</em><br>
-              Copy <code>SpectralGate.vst3</code> to <code>C:\Program Files\Common Files\VST3</code><br><br>
+              Copy <code>Spectral Gate.vst3</code> to <code>C:\Program Files\Common Files\VST3</code><br><br>
               <em>macOS:</em><br>
-              Copy <code>SpectralGate.vst3</code> to <code>/Library/Audio/Plug-Ins/VST3</code><br>
-              Copy <code>SpectralGate.component</code> to <code>/Library/Audio/Plug-Ins/Components</code>
+              Copy <code>Spectral Gate.vst3</code> to <code>/Library/Audio/Plug-Ins/VST3</code><br>
+              Copy <code>Spectral Gate.component</code> to <code>/Library/Audio/Plug-Ins/Components</code>
             </li>
           </ul>
         </div>
 
-        <div class="section note">
-          macOS tip: if the system blocks the plugin, right-click → <em>Open</em>.<br>
-          <strong>Alternatively:</strong><br>
-          <code>xattr -dr com.apple.quarantine "/Library/Audio/Plug-Ins/VST3/SpectralGate.vst3"</code>
+        <div class="section note-warning">
+          <strong>Gatekeeper note (macOS):</strong> the plugin is not signed by a certified Apple developer.<br>
+          To allow it to load for the first time, open the Terminal and enter the following commands
+          (you may be asked for your administrator password):<br>
+          <code>sudo xattr -rd com.apple.quarantine "/Library/Audio/Plug-Ins/VST3/Spectral Gate.vst3"</code>
+          <code>sudo xattr -rd com.apple.quarantine "/Library/Audio/Plug-Ins/Components/Spectral Gate.component"</code>
         </div>
       </div>
     </div>
